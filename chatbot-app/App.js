@@ -35,10 +35,12 @@ export default function App() {
         renderItem={({ item }) => (
           <View style={item.sender === 'user' ? styles.userMessage : styles.botMessage}>
             {item.sender === 'user' && (
-              <Image
-                source={require('./user_profile.png')} // Replace with your user profile picture source
-                style={styles.profileImage}
-              />
+              <View style={styles.profileContainer}>
+                <Image
+                  source={require('./user_profile.png')} // Replace with your user profile picture source
+                  style={styles.profileImage}
+                />
+              </View>
             )}
             <Text>{item.text}</Text>
           </View>
@@ -105,10 +107,15 @@ const styles = StyleSheet.create({
     maxWidth: '70%',
     alignSelf: 'flex-start',
   },
+  profileContainer: {
+    position: 'absolute',
+    top: 8,
+    right: 8,
+  },
   profileImage: {
     width: 40,
     height: 40,
     borderRadius: 20,
-    marginRight: 8,
   },
+
 });
